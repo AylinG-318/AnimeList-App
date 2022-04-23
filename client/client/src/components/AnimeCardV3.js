@@ -19,6 +19,7 @@ function AnimeCardV3(props) {
         <div className="anime-card-v3">
             <h1>{props.anime.title}</h1>
             <img src={props.anime.image_url}/>
+            <p>{props.anime.sypnosis}</p>
             <button onClick={addToUserList}>Add to List</button>
         </div>
     )

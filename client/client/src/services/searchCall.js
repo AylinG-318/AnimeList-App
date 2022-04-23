@@ -6,7 +6,10 @@ async function searchCall(input) {
     // September comes. For the sake of time, I will leave this here as is. 
     try {
         const response = await axios.get(`https://api.jikan.moe/v3/search/anime?q=${input}&order_by=title&sort=asc&limit=10`)
+        return response.data.results;
     } catch(e) {
         console.log(e);
     }
 }
+
+export default searchCall;

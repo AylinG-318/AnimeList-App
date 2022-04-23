@@ -6,8 +6,10 @@ import AnimeCard from "./AnimeCard";
 function Header() {
 
     const [randomAni, setRandomAni] = useState()
-
-   
+    const [userSelected, setUserSelected] = useState([])
+    //Our users API call is in an array, right? 
+    //But just because it's in our header, it doesn't meant that it'll be accessible by the prop components. 
+   // Trouble still stands.
 
     const handleOnClick = async () => {
         alert('click confirmed.')
@@ -33,10 +35,16 @@ function Header() {
                     <li>Home</li>
                     </NavLink>
 
+                    <NavLink to="/search">
                     <li>Search</li>
-
+                    </NavLink>
+                    
                     <NavLink to="/random">
                     <li>Random Anime</li>
+                    </NavLink>
+
+                    <NavLink to="/users">
+                        <li>Users</li>
                     </NavLink>
 
                     <li>About this asshole website maker.</li>

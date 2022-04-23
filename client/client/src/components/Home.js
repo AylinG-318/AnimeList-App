@@ -25,7 +25,8 @@ function Home() {
 
             <h5>The Top 50: (RIP my page)</h5>
             {popAni !== null ? popAni.map( (anime) => {
-                <AnimeCardV3 anime={anime} />
+              return(  <AnimeCardV3 anime={anime} />
+              )
             }) : 'Sorry, something went wrong. Please refresh the page.'}
         </div>
     )

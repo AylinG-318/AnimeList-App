@@ -1,25 +1,14 @@
 import { useState } from 'react';
-import randomCall from '../services/randomCall';
+import searchCall from '../services/searchCall';
+import AnimeCardV3 from './AnimeCardV3';
 
 function SearchAnime() {
     //Here, we'll insert another state. 
     //For now, it will be the single state
 
-    const [list, setList] = useState([])
-
-    const addToUserList = () => {
-   
-( (list === null) ? setList(props.anime.mal_id) : setList( prevState => 
-            [...prevState, props.anime.mal_id]
-            //This is how it's done, right? Even StackOverflow agrees with me...
-        )   );
-
-        console.log(list);
-        alert(`This is what we want---${props.anime.mal_id}, and this is what the user wants - "Added anime to list."`)
-      //Then we add that to our list.
-    }
-    
-      const [input, setInput] = useState('');
+  
+    const [animeResults, setAnimeResults] = useState([])    
+    const [input, setInput] = useState('');
 
       const handleOnChange = (event) => {
           event.preventDefault();
@@ -30,17 +19,29 @@ function SearchAnime() {
 
      async function handleSubmit(event) {
          event.preventDefault();
-         const response = await randomCall(input);
-         console.log(response);
+         const response = await searchCall(input);
+         setAnimeResults(response);
+         console.log(animeResults);
+        //  setAnimeResults(response)
          //We have to look at this data before setting it to our listState. 
-         setList(response)
+  
 
-     }
+}
     return (
         <div className="search-main-div">
             <h1>Search for Anime</h1>
             <input onChange={handleOnChange} type="text"></input>
-            <button onClick={handleOnClick}>Search</button>
+            <button onClick={handleSubmit}>Search</button>
+
+ 
+            <div className='search-results'>
+            {(animeResults != null) ? animeResults.map( (anime) => {
+              return (  <AnimeCardV3 anime={anime} />
+              )
+            }) : 'There are no anime that match your search.' }
+
+            </div>
+
         </div>
     )
 }
