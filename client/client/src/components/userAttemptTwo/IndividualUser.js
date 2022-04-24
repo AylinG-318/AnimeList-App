@@ -1,8 +1,6 @@
 import { useState, useEffect } from 'react';
 import { NavLink, useNavigate, useParams } from "react-router-dom";
 import axios from 'axios';
-import UserAnimeCard from './UserAnimeCard';
-import animeIdCall from '../../services/animeIdCall';
 import DisplayAllAnime from './DisplayAllAnime';
 
 function IndividualUser() {
@@ -60,9 +58,16 @@ function IndividualUser() {
         <button onClick={() => destroy()}>Delete user?</button>
          {/* Here we'll have the anime printed out.  */}
 
-         { (list !== undefined) ? list.map( (anime_id, index) => {
+{console.log("This is the list: " + list + "This is the type of list: " + typeof user.listArray)}
+         {list.map( (anime_id, index) => {
+          
+
+             return (
              <DisplayAllAnime anime_id={anime_id} />
-         }): `${user.username} currently does not have any anime saved.`}
+             )
+
+        }) }
+         
 
         <NavLink to={`/users/${id}/edit`}>
             <button>Edit User Details</button>

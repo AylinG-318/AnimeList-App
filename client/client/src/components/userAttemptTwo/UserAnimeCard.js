@@ -4,7 +4,8 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
-import { set } from 'mongoose';
+
+
 
 function UserAnimeCard(props) {
     const navigate = useNavigate
@@ -17,7 +18,10 @@ function UserAnimeCard(props) {
     });
     //Our user info should be in object form. 
 
-    const anime_id = props.anime.mal_id;
+    //I'm fairly certain it's a string...
+    const animeID = props.anime.mal_id;
+    const malLink = props.anime.url;
+    // const picLink = props.anime.image_url;
     const { id } = useParams(); 
     //We need the id to access our user. 
 
@@ -27,6 +31,8 @@ function UserAnimeCard(props) {
                 const response = await axios(`http://localhost:3001/api/users/${id}`)
                 console.log("Our user: ", response);
                 setUser(response.data);
+                console.log('This is our props anime: ', props.anime)
+                console.log("our user array: ", user.listArray)
             } catch(error) {
                 console.log(error)
             }
@@ -39,21 +45,31 @@ function UserAnimeCard(props) {
         //We're not yet updating our data in the database ---,
         //right now, we take our ListArray, and filter out the number. 
         const userArray = user.listArray;
-
+        console.log("This is the user array: ", JSON.stringify(userArray))
+        const filterIt = (item) => {
+            return item != animeID;
+        }
+        
         const filteredArray = userArray.filter( (item) => {
-            // (item !== anime_id)
-            console.log('lol its not filtering')
+            return filterIt(item);
+            console.log('lol its not filtering + typeofArray ' + typeof item)
+            // console.log('this is the anime id for filtering: ', anime_id)
         })
-        const updatedList = { "listArray" : filteredArray}
+
+        
+        const updatedList = { "listArray" : filteredArray }
+        console.log("This is our updatedList: " + JSON.stringify(updatedList) + "This is our original array :" + userArray)
         const editedArray = Object.assign(user, updatedList);
+
         //So now, hopefully we've assigned what we had to assign...
         //This is going to be slow, I bet.
         
-        // setUser(editedArray)
+        // console.log("This is the filterd array: ", user.listArray)
     }
 
     const handleRemoveClick = () => {
         //The page should refresh after this, actually. 
+        removeFromList();
         axios({
             url: `http://localhost:3001/api/users/${id}`,
             method: "PUT",
@@ -61,9 +77,17 @@ function UserAnimeCard(props) {
         })
         .then(() => setUpdated(true))
         .catch(console.error);
+
+        window.location.reload(true); 
+        
     }
 
-    useEffect(() => {
+    const findMoreInfo = () => {
+        console.log(`it's been clicked: `, malLink)
+        window.open(malLink)
+    }
+
+    useEffect( () => {
         if (updated) {
             return navigate(`/userList/${id}`)
         }
@@ -73,13 +97,15 @@ function UserAnimeCard(props) {
         <div className="anime-card">
             <div className="anime-info">
             <h3>{props.anime.title}</h3>
-            {/* <img src={props.anime.images.jpg.image_url} />
-            <p>{props.anime.synopsis}</p> */}
+            {console.log(props.imageURL)}
+            <img src={props.imageURL} />
+            <button onClick={findMoreInfo}>More Info (MyMAL Redirect)</button>
+            {/* <p>{props.anime.synopsis}</p> */}
             </div>
           
             {/* <img src={props.anime.images.jpg.image_url}/> */}
             <div className="anime-button">
-            <button onClick={removeFromList}>Remove from List</button>
+            <button onClick={handleRemoveClick}>Remove from List</button>
             </div>
            
         </div>

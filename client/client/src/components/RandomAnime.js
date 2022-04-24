@@ -5,7 +5,12 @@ import { useState, useEffect } from 'react';
 import randomCall from "../services/randomCall";
 
 function RandomAnime() {
+    //You know what? Let's do this the dirty way...
+    // Every component, we load a user. Redux is better, but I don't know if I have time to make sense of it. 
+    //
 
+    const [user, setUser] = useState('');
+    
     const [randomAni, setRandomAni] = useState()
 
     const handleOnClick = async () => {

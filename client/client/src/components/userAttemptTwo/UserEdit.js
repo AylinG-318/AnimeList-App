@@ -6,9 +6,16 @@ function UserEdit() {
     const navigate = useNavigate();
     const { id } = useParams();
 
-    const [item, setItem] = useState({
+    const [user, setUser] = useState({
         username: '',
         email: '',
         listArray: [],
     })
+
+    const fetchUserData = async () => {
+        
+    }
+    useEffect( () => {
+         
+    }, [])
 }

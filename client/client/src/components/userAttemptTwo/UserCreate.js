@@ -46,7 +46,7 @@ useEffect( () => {
         user={user}
         handleChange={(e) => handleChange(e)}
         handleSubmit={(e) => handleSubmit(e)}
-        cancelPath='/' />
+        cancelPath='/users' />
 
     )
 }

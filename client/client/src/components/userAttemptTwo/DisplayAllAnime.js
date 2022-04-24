@@ -17,9 +17,10 @@ function DisplayAllAnime(props) {
 
     //We'd need a use state, and this time it can be a basic one, I believe. All the data will be in the backend server. 
     const { id } = useParams();
-
+    
+    const animeID = props.anime_id;
     const [anime, setAnime] = useState({});
-
+    const [imageURL, setImageURL] = useState('')
     // const fetchData = async () => {
     //     try {
     //         const response = await axios(`http://localhost:3001/api/users/${id}`)
@@ -37,10 +38,12 @@ function DisplayAllAnime(props) {
     //Don't do the above. It's a waste. Pass it down as a prop instead. 
     // We need to do an API call for anime, however. 
 
-    const fetchAnimeData = async (props) => {
+    const fetchAnimeData = async () => {
         try {
-            const response = await animeIdCall(props.anime_id);
-            setAnime(response); 
+            const response = await animeIdCall(animeID);
+            console.log('This is the anime found: ', response)
+            setAnime(response.data); 
+            setImageURL(response.data.images.jpg.image_url)
         } catch(e) {
             console.log(e);
         }
@@ -51,7 +54,14 @@ function DisplayAllAnime(props) {
     }, [])
     
     return (
-     <UserAnimeCard anime={anime} />
+    
+            <UserAnimeCard anime={anime} imageURL={imageURL}/>
+      
+     
+    // <div>
+    //     <p>An anime should be here.</p>
+    //     {console.log('This is displayAllAnimes anime: ' , anime)}
+    // </div>
     )
 
 
