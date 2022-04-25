@@ -1,34 +1,37 @@
 import { useState } from 'react';
+import axios from 'axios';
 
 function AnimeCard(props) {
-    const [list, setList] = useState([])
+    const [list, setList] = useState()
+    const [updatedUser, setUpdatedUser] = useState({
+    
+    })
 
-    const addToUserList = () => {
-        // Here, we'll have to call the backend API, correct? 
-        // Call backend user -- depending on who is logged in.
-        // If I cannot figure out authetication - and as the moron i am, of course i won't --
-        // Have a general state --- empty list, and add to it. Then display. 
-        // console.log(`This is what we want---${props.anime.mal_id}`)
+    const userID = props.currentUser._id;
+    const userArray = props.currentUser.listArray;
 
-( (list === null) ? setList(props.anime.mal_id) : setList( prevState => 
-            [...prevState, props.anime.mal_id]
-            //This is how it's done, right? Even StackOverflow agrees with me...
-        )   );
+    const handleSubmit = (event) => {
+        event.preventDefault()
+        axios({
+            // url: `${apiUrl}/users`
+            url: `http://localhost:3001/api/users/${userID}`,
+            method: 'PUT',
+            data: updatedUser
+        }).catch(console.error)
+        // .then(res => setUpdatedUser(res.data.user)).catch(console.error)
+    }
 
-        //The above needs to be edited - we have to add to this array...
-        //oh, is this where linked lists would come in handy? 
-        // One issue -- it needs two clicks to update...
-        
-        console.log(list);
+    const addToUserList = (event) => {
+        let updatedList = [];
+        console.log()
+        setList(props.anime.mal_id);
+       {userArray != null && userArray != undefined ? updatedList = [...userArray, list] : updatedList = [list]} 
         console.log(typeof props.anime.mal_id)
+        console.log('Sample Updated List: ', updatedList)
+        console.log(`User ID is: `, userID)
+        setUpdatedUser({ "listArray": updatedList})
         alert(`This is what we want---${props.anime.mal_id}, and this is what the user wants - "Added anime to list."`)
-        //Then we add that to our list.
-        //When we click on "user profile" or "user-page"
-        // We want to make an api call to get all of these titles at once and map them out. 
-
-        // oh shit...we need redux, don't we?
-        // several components where we'll add to this list, so one useState isn't going to work for this...
-        // ...fuck. 
+        handleSubmit(event);
     }
 
     return (

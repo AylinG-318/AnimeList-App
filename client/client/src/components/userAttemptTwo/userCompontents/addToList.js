@@ -1,12 +1,7 @@
-import { useState, useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
-import UserForm from './userCompontents/UserForm';
 
-function UserEdit() {
-    const navigate = useNavigate();
-    const { id } = useParams();
-    
+async function addToList(props) {
+    //props.currentUser;
     const [user, setUser] = useState({
         username: '',
         email: '',
@@ -35,24 +30,5 @@ function UserEdit() {
     }
 
 
-useEffect( () => {
-    if(createdUser) {
-        return navigate(`/users/${id}`)
-    }
-}, [createdUser, navigate])
-
-
-    return (
-        <UserForm
-        user={user}
-        handleChange={(e) => handleChange(e)}
-        handleSubmit={(e) => handleSubmit(e)}
-        cancelPath={`/users/${id}`} />
-
-    )
-
-
 
 }
-
-export default UserEdit;
