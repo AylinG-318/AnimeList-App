@@ -11,7 +11,10 @@ function Home() {
         const [currentUser, setCurrentUser] = useState({});
         const [userObj, setUserObj] = useState('');
         const [allUsers, setAllUsers] = useState([])
-      
+
+        const [remove, setRemove] = useState(false);
+        //Let's try to conditionally render the selection...
+
         const fetchData = async () => {
             try {
                 const response = await axios(`http://localhost:3001/api/users`)
@@ -61,9 +64,10 @@ function Home() {
 
   
 
-    const showAnime = (currentUser, popAni) => {
-        setGoForIt(!goForIt);
+    const showAnime = (currentUser) => {
+       setGoForIt(!goForIt); 
     }
+
     return(
         <div className="home-main-div">
             <h2>Yokoso.</h2>
@@ -82,12 +86,12 @@ function Home() {
             
         </div>
 
-            <h5>The Top 50</h5>
+            <h1>The Top 50</h1>
             <button onClick={showAnime}>Show Top 50 Anime</button>
             {goForIt === true ? popAni.map( (anime) => {
               return(  <AnimeCardV3 anime={anime} currentUser={currentUser}/>
               )
-            }) : 'Press the button for the current Top 50 anime.'}
+            }) : 'Click for the Top 50.'}
         </div>
         </div>
     )

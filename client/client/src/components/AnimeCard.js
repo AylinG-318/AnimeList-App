@@ -30,8 +30,10 @@ function AnimeCard(props) {
         console.log('Sample Updated List: ', updatedList)
         console.log(`User ID is: `, userID)
         setUpdatedUser({ "listArray": updatedList})
-        alert(`This is what we want---${props.anime.mal_id}, and this is what the user wants - "Added anime to list."`)
-        handleSubmit(event);
+        // alert(`This is what we want---${props.anime.mal_id}, and this is what the user wants - "Added anime to list."`)
+        console.log(`This is what we want---${props.anime.mal_id}, and this is what the user wants - "Added anime to list.`)
+        handleSubmit(event)
+        // console.log(`This is what we want---${props.anime.mal_id}, and this is what the user wants - "Added anime to list.`)
     }
 
     return (

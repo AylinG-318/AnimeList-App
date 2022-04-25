@@ -3,6 +3,11 @@ import searchCall from '../services/searchCall';
 import AnimeCardV3 from './AnimeCardV3';
 import axios from 'axios';
 import { NavLink } from 'react-router-dom';
+
+//THE SEARCH FEATURE IS BUGGED --- RandomAnime works as intended, as we re-render the anime card with each click
+//...and as long as we remember to switch the user BEFORE clicking. 
+
+//Ugh. There's not enough time left to fix anything. 
 function SearchAnime() {
     //Here, we'll insert another state. 
     //For now, it will be the single state

@@ -21,7 +21,7 @@ function DisplayAllUsers() {
 
     const userData = users.map( (user, index) => {
         return (
-            <li key={user.username}>
+            <li key={index}>
                 <NavLink to={`/users/${user._id}`} >
                 {user.username}
                 </NavLink>

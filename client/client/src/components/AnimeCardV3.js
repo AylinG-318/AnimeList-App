@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios'; 
 
 function AnimeCardV3(props) {
@@ -8,6 +8,11 @@ function AnimeCardV3(props) {
     })
     const [refreshedUser, setRefreshedUser] = useState([]);
     const userID = props.currentUser._id;
+    //THIS IS THE SOURCE OF THE GLITCH -- We CAN'T pass down the updated value...once it's down, it's down.
+    // Even if we update the value above, it's done. This is what's stuck here. 
+    // There's no time left to figure out redux, unfortunately. 
+    // Should've studied more....
+
     const [userArray, setUserArray] = useState(props.currentUser.listArray)
 
     // const fetchRefresh = async () => {
@@ -30,22 +35,32 @@ function AnimeCardV3(props) {
             data: updatedUser
         }).catch(console.error)
         // .then(res => setUpdatedUser(res.data.user)).catch(console.error)
-
+        //HUGE GLITCH AT THE MOMENT -- If we switch users w/ this logic, then their entire list will be 
+        // overwritten by the previous user. Easiest fix is to simply refresh the page....
+        
         
     }
 
-    const addToUserList = (event) => {
-        let updatedList = [];
-        console.log()
+    const addToUserList = () => {
+       
         setList(props.anime.mal_id);
-       {userArray != null && userArray != undefined ? updatedList = [...userArray, list] : updatedList = [list]} 
+        console.log(list);
+        updateIt();
+    }
+
+    const updateIt = () => {
+        let updatedList = [];
+        {userArray != null && userArray != undefined ? updatedList = [...userArray, list] : updatedList = [list]} 
         console.log(typeof props.anime.mal_id)
         console.log('Sample Updated List: ', updatedList)
         console.log(`User ID is: `, userID)
         setUpdatedUser({ "listArray": updatedList})
-        alert(`This is what we want---${props.anime.mal_id}, and this is what the user wants - "Added anime to list."`)
-        handleSubmit(event);
+        console.log(`This is what we want---${props.anime.mal_id}, and this is what the user wants - "Added anime to list.`)
+        // alert(`This is what we want---${props.anime.mal_id}, and this is what the user wants - "Added anime to list."`)
+        handleSubmit();
     }
+
+
 
     return (
         <div className="anime-card-v3">
