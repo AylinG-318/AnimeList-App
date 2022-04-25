@@ -73,11 +73,10 @@ function RandomAnime() {
                   <div className='userSelect-form'>
                 
                 <h1>Select Current User</h1>
-                {userData}
                 <NavLink to="/user-create">
                     <h3>Create a New User?</h3>
                 </NavLink>
-                
+                {userData}
             
             </div>
 

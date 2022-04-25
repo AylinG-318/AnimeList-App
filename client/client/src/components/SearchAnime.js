@@ -1,12 +1,55 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import searchCall from '../services/searchCall';
 import AnimeCardV3 from './AnimeCardV3';
-
+import axios from 'axios';
+import { NavLink } from 'react-router-dom';
 function SearchAnime() {
     //Here, we'll insert another state. 
     //For now, it will be the single state
 
+    //--------------Activate User Select Section -----------------
+    const [currentUser, setCurrentUser] = useState({});
+    const [userObj, setUserObj] = useState('');
+    const [allUsers, setAllUsers] = useState([])
   
+    const fetchData = async () => {
+        try {
+            const response = await axios(`http://localhost:3001/api/users`)
+            console.log("our api call response for users: ", response)
+            setAllUsers(response.data.users);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    useEffect( () => {
+        fetchData();
+    }, [])
+
+    const userData = allUsers.map( (user, index) => {
+        return (
+            <label>
+           <input 
+           type="radio"
+           name ="userSelect"
+           value={user.username}
+           onChange={() => {
+               setCurrentUser(user) 
+               console.log(currentUser);
+               return (
+                   <p>Current User: {user.username}</p>
+               )
+           }}/>
+           {user.username}
+           </label>
+        )
+    })
+
+    //---------------End of Activate User Select Section ---------------
+
+
+
+    //---------------Start of Search Input Functionality---------------
     const [animeResults, setAnimeResults] = useState([])    
     const [input, setInput] = useState('');
 
@@ -29,6 +72,18 @@ function SearchAnime() {
 }
     return (
         <div className="search-main-div">
+               
+        <div className="random-anime-main">
+                  <div className='userSelect-form'>
+                
+                <h1>Select Current User</h1>
+                <NavLink to="/user-create">
+                    <h3>Create a New User?</h3>
+                </NavLink>
+                {userData}
+            
+        </div>
+            
             <h1>Search for Anime</h1>
             <input onChange={handleOnChange} type="text"></input>
             <button onClick={handleSubmit}>Search</button>
@@ -36,11 +91,13 @@ function SearchAnime() {
  
             <div className='search-results'>
             {(animeResults != null) ? animeResults.map( (anime) => {
-              return (  <AnimeCardV3 anime={anime} />
+              return (  <AnimeCardV3 anime={anime} currentUser={currentUser} />
               )
             }) : 'There are no anime that match your search.' }
 
             </div>
+
+        </div>
 
         </div>
     )
