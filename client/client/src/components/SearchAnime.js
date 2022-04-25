@@ -96,7 +96,7 @@ function SearchAnime() {
             <button onClick={handleSubmit}>Search</button>
 
  
-            <div className='search-results'>
+            <div className='row'>
             {(animeResults != null) ? animeResults.map( (anime) => {
               return (  <AnimeCardV3 anime={anime} currentUser={currentUser} />
               )

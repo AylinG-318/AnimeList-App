@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 const UserForm = ({user, handleSubmit, handleChange, cancelPath}) => {
     return (
         <form onSubmit={(e) => handleSubmit(e)}>
-            <label>Create a User</label>
+            <label>Create/Edit a User</label>
             <input 
             placeholder="username"
             name="username"

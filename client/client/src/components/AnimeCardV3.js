@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios'; 
+import Button from 'react-bootstrap';
 
 function AnimeCardV3(props) {
     const [list, setList] = useState()
@@ -42,15 +43,14 @@ function AnimeCardV3(props) {
     }
 
     const addToUserList = () => {
-       
-        setList(props.anime.mal_id);
+        setList(props.anime.mal_id)
         console.log(list);
         updateIt();
     }
 
     const updateIt = () => {
         let updatedList = [];
-        {userArray != null && userArray != undefined ? updatedList = [...userArray, list] : updatedList = [list]} 
+        {userArray != null && userArray != undefined && list != null & list != undefined? updatedList = [...userArray, list] : updatedList = [list]} 
         console.log(typeof props.anime.mal_id)
         console.log('Sample Updated List: ', updatedList)
         console.log(`User ID is: `, userID)
@@ -58,16 +58,20 @@ function AnimeCardV3(props) {
         console.log(`This is what we want---${props.anime.mal_id}, and this is what the user wants - "Added anime to list.`)
         // alert(`This is what we want---${props.anime.mal_id}, and this is what the user wants - "Added anime to list."`)
         handleSubmit();
+
+
+        //...Another stark reminder of Redux's importance. OF COURSE NONE OF THIS WORKS.
+        // WHY WOULD IT? 
     }
 
 
 
     return (
-        <div className="anime-card-v3">
-            <h1>{props.anime.title}</h1>
+        <div className="col-sm-4">
+            <h3>{props.anime.title}</h3>
             <img src={props.anime.image_url}/>
             <p>{props.anime.sypnosis}</p>
-            <button onClick={addToUserList}>Add to List</button>
+            <button type="button" className="btn btn-info"onClick={addToUserList}>Add to List</button>
         </div>
     )
 }

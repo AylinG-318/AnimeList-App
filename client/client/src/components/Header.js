@@ -26,41 +26,49 @@ function Header() {
     // }, [setRandomAni, randomAni])
 
     return (
-        <div>
-            <h1>This is an anime site.</h1>
-            <p>You're going to have to replace this, anyway. </p>
-            <nav>
-                <ul>
+        <div className="navbar navbar-expand-lg navbar-light bg-light">
+            <a className="navbar-brand">Anime List</a>
+            {/* Such a clever title, right? */}
+            {/* <p>You're going to have to replace this, anyway. </p> */}
+            <nav className="navbar brand">
+                <ul className="navbar-nav">
                 <NavLink to="/">
-                    <li>Home</li>
+                    <li className="nav-item">Home</li>
+                </NavLink>
+
+                    <NavLink to="/top-50">
+                        <li className="nav-item">Top 50 Anime</li>
                     </NavLink>
 
                     <NavLink to="/search">
-                    <li>Search</li>
+                    <li className="nav-item">Search</li>
                     </NavLink>
                     
                     <NavLink to="/random">
-                    <li>Random Anime</li>
+                    <li className="nav-item">Random Anime</li>
                     </NavLink>
 
                     <NavLink to="/users">
-                        <li>Users</li>
+                        <li className="nav-item">Users</li>
                     </NavLink>
 
-                    <li>About this asshole website maker.</li>
+                    <NavLink to="/about">
+                    <li className="nav-item">About this garbage website.</li>
+                    </NavLink>
 
                 </ul>
             </nav>
 
             <div className="user-icon">
                 {/* Here's where a clickable image goes. */}
-                <img onClick={handleOnClick} src="*"/>
+                {/* <img onClick={handleOnClick} src="*"/> */}
                 {/* Api call for a user picture... */}
                 {/* Huh, will that work? */}
                
             </div>
 
-            {randomAni ? <AnimeCard anime={randomAni} />  : `There is no random anime to display.`}
+            {/* {randomAni ? <AnimeCard anime={randomAni} />  : `There is no random anime to display.`} */}
+            {/* This above was used for testing purposes. No longer needed. */}
         </div>
     )
 }

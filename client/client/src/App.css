@@ -46,3 +46,25 @@ ul, li {
 body {
   text-align: center;
 }
+
+.website-maker-warning {
+  font-style: italic;
+  font-weight: bolder;
+}
+
+.anime-assortment {
+  /* display: flexbox; */
+  display: grid;
+  grid-template-columns: auto;
+
+}
+
+.anime-card {
+  display: grid;
+  grid-template-rows: auto;
+}
+
+.individual-anime-card-container {
+  display: flexbox;
+  flex-direction: row;
+}

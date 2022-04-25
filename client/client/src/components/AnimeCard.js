@@ -37,7 +37,7 @@ function AnimeCard(props) {
     }
 
     return (
-        <div className="anime-card">
+        <div className="col-sm-4">
             <div className="anime-info">
             <h3>{props.anime.title}</h3>
             <img src={props.anime.images.jpg.image_url} />

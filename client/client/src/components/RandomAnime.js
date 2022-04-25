@@ -80,7 +80,10 @@ function RandomAnime() {
             </div>
 
             <button onClick={handleOnClick}>Show a Random Anime</button>
+
+            <div className="row">
             {randomAni ? <AnimeCard anime={randomAni} currentUser={currentUser}/>  : `There is no random anime to display.`}
+            </div>
         </div>
     )
 }

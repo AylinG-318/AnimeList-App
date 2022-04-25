@@ -5,7 +5,7 @@ function Footer() {
     
     return(
         <div>
-            <h2>Made by Supreme Observer in the year 2022, maintained in the year {year}</h2>
+            <h5>Made by Supreme Observer. "cOpYright" 2022-{year}</h5>
         </div>
     )
 }

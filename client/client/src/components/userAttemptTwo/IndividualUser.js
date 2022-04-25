@@ -55,20 +55,20 @@ function IndividualUser() {
     return (
         <div className='individual-user-page'>
         <h2>{user.username}'s Anime List</h2>
-        <button onClick={() => destroy()}>Delete user?</button>
+        <button type="button" className="btn btn-danger"onClick={() => destroy()}>Delete user?</button>
          {/* Here we'll have the anime printed out.  */}
 
 {console.log("This is the list: " + list + "This is the type of list: " + typeof user.listArray)}
-         {list.map( (anime_id, index) => {
-          
+    <div className="row">
 
+    {list.map( (anime_id, index) => {      
              return (
              <DisplayAllAnime anime_id={anime_id} />
              )
 
         }) }
          
-
+         </div> 
         <NavLink to={`/users/${id}/edit`}>
             <button>Edit User Details</button>
         </NavLink>

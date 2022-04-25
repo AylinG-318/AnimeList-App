@@ -94,18 +94,22 @@ function UserAnimeCard(props) {
     })
 
     return (
-        <div className="anime-card">
+        <div className="col-sm-4">
             <div className="anime-info">
             <h3>{props.anime.title}</h3>
             {console.log(props.imageURL)}
             <img src={props.imageURL} />
-            <button onClick={findMoreInfo}>More Info (MyMAL Redirect)</button>
+            
+            <div className='anime-info-button'>
+            <button type="button" className="btn btn-info" onClick={findMoreInfo}>More Info (MyMAL Redirect)</button>
             {/* <p>{props.anime.synopsis}</p> */}
+            </div>
+            
             </div>
           
             {/* <img src={props.anime.images.jpg.image_url}/> */}
-            <div className="anime-button">
-            <button onClick={handleRemoveClick}>Remove from List</button>
+            <div className="anime-remove-button">
+            <button tupe="button" className="btn btn-danger" onClick={handleRemoveClick}>Remove from List</button>
             </div>
            
         </div>

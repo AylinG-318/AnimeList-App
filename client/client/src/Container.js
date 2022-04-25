@@ -6,6 +6,8 @@ import UserCreate from './components/userAttemptTwo/UserCreate';
 import DisplayAllUsers from './components/userAttemptTwo/DisplayUsers';
 import IndividualUser from './components/userAttemptTwo/IndividualUser';
 import UserEdit from './components/userAttemptTwo/UserEdit';
+import WebsiteMaker from './components/About.js';
+import Top50 from './components/Top50';
 
 function Container() {
     return (
@@ -18,6 +20,8 @@ function Container() {
                 <Route path="/users/:id/edit" element={<UserEdit />} />
                 <Route path="/users" element={<DisplayAllUsers />} />
                 <Route path="/users/:id" element={<IndividualUser />} />
+                <Route path="/about" element={<WebsiteMaker />} />
+                <Route path="/top-50" element={<Top50 />} />
 
             </Routes>
         </div>
