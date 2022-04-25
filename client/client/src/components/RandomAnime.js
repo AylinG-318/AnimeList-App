@@ -56,7 +56,6 @@ function RandomAnime() {
     const [randomAni, setRandomAni] = useState()
 
     const handleOnClick = async () => {
-        alert('click confirmed.')
        try {
            const animeData = await randomCall();
            setRandomAni(animeData);

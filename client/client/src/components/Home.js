@@ -59,6 +59,8 @@ function Home() {
         getPopAnime();
     }, [])
 
+  
+
     const showAnime = (currentUser, popAni) => {
         setGoForIt(!goForIt);
     }

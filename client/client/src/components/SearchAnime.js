@@ -48,7 +48,9 @@ function SearchAnime() {
     //---------------End of Activate User Select Section ---------------
 
 
-
+    useEffect( () => {
+        //Let's hope this re-renders everthing based on current user...
+    }, [currentUser])
     //---------------Start of Search Input Functionality---------------
     const [animeResults, setAnimeResults] = useState([])    
     const [input, setInput] = useState('');

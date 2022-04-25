@@ -6,12 +6,23 @@ function AnimeCardV3(props) {
     const [updatedUser, setUpdatedUser] = useState({
     
     })
-
+    const [refreshedUser, setRefreshedUser] = useState([]);
     const userID = props.currentUser._id;
-    const userArray = props.currentUser.listArray;
+    const [userArray, setUserArray] = useState(props.currentUser.listArray)
+
+    // const fetchRefresh = async () => {
+    //         try {
+    //             const response = await axios(`http://localhost:3001/api/users/${userID}`)
+    //             console.log("This is our users response: ", response)
+    //             setUserArray(response.data.listArray);
+    //             console.log("This is our response data in individual user", response)
+    //         } catch(error) {
+    //             console.log(error)
+    //         }
+    // }
 
     const handleSubmit = (event) => {
-        event.preventDefault()
+        // event.preventDefault()
         axios({
             // url: `${apiUrl}/users`
             url: `http://localhost:3001/api/users/${userID}`,
@@ -19,6 +30,8 @@ function AnimeCardV3(props) {
             data: updatedUser
         }).catch(console.error)
         // .then(res => setUpdatedUser(res.data.user)).catch(console.error)
+
+        
     }
 
     const addToUserList = (event) => {

@@ -11,7 +11,7 @@ function AnimeCard(props) {
     const userArray = props.currentUser.listArray;
 
     const handleSubmit = (event) => {
-        event.preventDefault()
+        // event.preventDefault()
         axios({
             // url: `${apiUrl}/users`
             url: `http://localhost:3001/api/users/${userID}`,
