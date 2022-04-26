@@ -10,7 +10,8 @@ import { NavLink } from 'react-router-dom'
 function RandomAnime() {
     //You know what? Let's do this the dirty way...
     // Every component, we load a user. Redux is better, but I don't know if I have time to make sense of it. 
-    //
+    // ....Redux would be *significanly* better. How do we tell the parent component to re-load based off what 
+    // happens in the child component? It's not happening. With a global state, this would be a non-issue. 
     const [currentUser, setCurrentUser] = useState({});
     const [userObj, setUserObj] = useState('');
     const [allUsers, setAllUsers] = useState([])
@@ -36,6 +37,7 @@ function RandomAnime() {
             return (
                 <label>
                <input 
+               className="radio-select"
                type="radio"
                name ="userSelect"
                value={user.username}
@@ -76,6 +78,7 @@ function RandomAnime() {
                     <h3>Create a New User?</h3>
                 </NavLink>
                 {userData}
+                {(currentUser !== undefined) ? <h5>Current User: {currentUser.username}</h5> : <h5>Current User:</h5>}
             
             </div>
 

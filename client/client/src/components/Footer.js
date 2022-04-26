@@ -5,7 +5,7 @@ function Footer() {
     
     return(
         <div>
-            <h5>Made by Supreme Observer. "cOpYright" 2022-{year}</h5>
+            <h5>Made by Otaku Observer. 2022-{year}</h5>
         </div>
     )
 }

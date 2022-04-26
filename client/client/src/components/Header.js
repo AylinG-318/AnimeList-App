@@ -53,7 +53,7 @@ function Header() {
                     </NavLink>
 
                     <NavLink to="/about">
-                    <li className="nav-item">About this garbage website.</li>
+                    <li className="nav-item">Website Instructions</li>
                     </NavLink>
 
                 </ul>

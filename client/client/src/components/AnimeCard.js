@@ -41,7 +41,11 @@ function AnimeCard(props) {
             <div className="anime-info">
             <h3>{props.anime.title}</h3>
             <img src={props.anime.images.jpg.image_url} />
-            <p>{props.anime.synopsis}</p>
+            <blockquote>
+            
+                <p>{props.anime.synopsis}</p>
+                <footer>From MyAnimeList</footer>
+            </blockquote>
             </div>
           
             {/* <img src={props.anime.images.jpg.image_url}/> */}

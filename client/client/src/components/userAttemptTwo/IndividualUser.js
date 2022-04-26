@@ -3,10 +3,12 @@ import { NavLink, useNavigate, useParams } from "react-router-dom";
 import axios from 'axios';
 import DisplayAllAnime from './DisplayAllAnime';
 
+
 function IndividualUser() {
     const[user, setUser] = useState([]);
     const [list, setList] = useState([]);
     const [deleted, setDeleted] = useState(false);
+    // const [sure, setSure] = useState(false);
     const { id } = useParams();
     let navigate = useNavigate();
 
@@ -50,12 +52,29 @@ function IndividualUser() {
         }
     }, [deleted, navigate])
 
- 
+    // const areYouSure = (user) => {
+    // //     let sure = confirm(`Are you sure you want to delete user ${user.username}?`) 
+    // //    ( sure ? destroy() : alert(`User ${user.username} remains.`))
+    //     setSure(!sure);
+
+    // }
 
     return (
         <div className='individual-user-page'>
         <h2>{user.username}'s Anime List</h2>
-        <button type="button" className="btn btn-danger"onClick={() => destroy()}>Delete user?</button>
+        <button type="button" className="btn btn-danger"onClick={() => destroy() }>Delete user?</button>
+        {/* { sure ? 
+        <div className='delete-warning'>
+            <h5>Are you sure? There is no way to retrieve user data once deleted.</h5>
+        <button type="button" className='btn btn-danger' onClick={() => destroy()}>Delete User</button>
+        </div> : null} */}
+        <NavLink to={`/users/${id}/edit`}>
+            <button type="button" className='btn btn-primary'>Edit User Details</button>
+        </NavLink>
+
+        <NavLink to="/users">
+            <button type="button" className='btn btn-info'>Back to All Users</button>
+        </NavLink>
          {/* Here we'll have the anime printed out.  */}
 
 {console.log("This is the list: " + list + "This is the type of list: " + typeof user.listArray)}
@@ -69,13 +88,7 @@ function IndividualUser() {
         }) }
          
          </div> 
-        <NavLink to={`/users/${id}/edit`}>
-            <button>Edit User Details</button>
-        </NavLink>
-
-        <NavLink to="/users">
-            Back to All Users
-        </NavLink>
+    
         </div>
     )
 }

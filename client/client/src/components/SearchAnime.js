@@ -35,6 +35,7 @@ function SearchAnime() {
         return (
             <label>
            <input 
+           className='radio-select'
            type="radio"
            name ="userSelect"
            value={user.username}
@@ -80,7 +81,7 @@ function SearchAnime() {
     return (
         <div className="search-main-div">
                
-        <div className="random-anime-main">
+        <div className="search-anime-main">
                   <div className='userSelect-form'>
                 
                 <h1>Select Current User</h1>
@@ -88,6 +89,8 @@ function SearchAnime() {
                     <h3>Create a New User?</h3>
                 </NavLink>
                 {userData}
+                {(currentUser !== undefined) ? <h5>Current User: {currentUser.username}</h5> : <h5>Current User:</h5>}
+            
             
         </div>
             

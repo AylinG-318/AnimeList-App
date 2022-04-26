@@ -34,6 +34,7 @@ function Top50() {
             return (
                 <label>
                <input 
+               className='radio-select'
                type="radio"
                name ="userSelect"
                value={user.username}
@@ -83,15 +84,18 @@ function Top50() {
                     <h4>Create a New User?</h4>
                 </NavLink>
                 {userData}
+                {(currentUser !== undefined) ? <h5>Current User: {currentUser.username}</h5> : <h5>Current User:</h5>}
             
         </div>
 
             <h3>The Top 50</h3>
             <button onClick={showAnime}>Show Top 50 Anime</button>
+            <div className='row'>
             {goForIt === true ? popAni.map( (anime) => {
               return(  <AnimeCardV3 anime={anime} currentUser={currentUser}/>
               )
             }) : 'Click for the Top 50.'}
+            </div>
         </div>
         </div>
     )
