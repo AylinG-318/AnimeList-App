@@ -23,8 +23,8 @@ Redux implementation will be a future (and most immediate) goal for the project.
 ---
 Wireframing
 ---
-![image](https://www.figma.com/file/0zx7vZQ4nzEBNsKG3C7POq/Untitled?node-id=0%3A1)
-![image](https://www.figma.com/file/0zx7vZQ4nzEBNsKG3C7POq/Untitled?node-id=2%3A2)
+https://www.figma.com/file/0zx7vZQ4nzEBNsKG3C7POq/Untitled?node-id=0%3A1
+https://www.figma.com/file/0zx7vZQ4nzEBNsKG3C7POq/Untitled?node-id=2%3A2
 
 ---
 Technologies Used: 
