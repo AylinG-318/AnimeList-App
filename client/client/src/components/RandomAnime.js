@@ -35,6 +35,7 @@ function RandomAnime() {
     
         const userData = allUsers.map( (user, index) => {
             return (
+                
                 <label>
                <input 
                className="radio-select"
@@ -77,7 +78,9 @@ function RandomAnime() {
                 <NavLink to="/user-create">
                     <h3>Create a New User?</h3>
                 </NavLink>
+            <div className="user-radio-div">
                 {userData}
+            </div>
                 {(currentUser !== undefined) ? <h5>Current User: {currentUser.username}</h5> : <h5>Current User:</h5>}
             
             </div>

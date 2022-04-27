@@ -122,7 +122,7 @@ input {
 } */
 
 .random-anime-main {
-  background-image: url("https://i.imgur.com/C1fEbPW.jpeg");
+  background-image: url("https://i.imgur.com/UsiiFjA.jpeg");
   
   /* https://i.imgur.com/Es9om0f.jpeg" */
   background-repeat: no-repeat;
@@ -145,4 +145,19 @@ input {
   background-size: cover;
   color: black;
   height: 100vh;
+}
+
+.about-div {
+  background-image: url("https://i.imgur.com/pMx3wKS.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: black;
+  height: 100vh;
+}
+
+.user-radio-div > input {
+  padding-left: 30px;
+  padding-right: 30px;
+  margin-left: 30px;
+  margin-right: 30px;
 }

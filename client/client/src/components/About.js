@@ -13,7 +13,7 @@ function About() {
                 <li>This can be avoided if the page is refreshed. You can change a user after refreshing the page.</li>
                 <li>With that warning out of the way ---</li>
                 <li>Switch to either "Search" or "Random Anime" and pick a user.</li>
-                <li><span className="website-maker-warning">And don't switch to another user.</span></li>
+                <li><span className="website-maker-warning">Don't switch to another user.</span></li>
                 <li>...Now, pick an anime! Click three times. I'm that incompenent at this whole thing. It won't work first try.</li>
                 <li>Now, refresh the page.</li>
                 <li>Then start over.</li>

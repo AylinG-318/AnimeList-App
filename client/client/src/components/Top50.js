@@ -76,7 +76,7 @@ function Top50() {
 {/*             
             <h4>Take a look at some popular anime...</h4> */}
 
-            <div className="random-anime-main">
+            <div className="top-anime-main">
                   <div className='userSelect-form'>
                 
                 <h3>Select Current User</h3>
@@ -102,3 +102,5 @@ function Top50() {
 }
 
 export default Top50;
+
+//Who knows what was here????
